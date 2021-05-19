@@ -8,7 +8,7 @@ function expandShown(board, elCell, i, j) {
     //(see description at the Bonuses section below)
 };
 
-function renderBoard(board) {
+function renderBoard(board, className) {
     var strHTML = '<table border="1"><tbody>';
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>';
@@ -31,7 +31,7 @@ function renderBoard(board) {
                     cellSign = negsCount;
                 }
             }
-            strHTML += `<td data-i="${i}" data-j="${j}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(this, ${i},${j}); return false;">${cellSign}</td>`;
+            strHTML += `<td data-i="${i}" data-j="${j}" class="${className}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(this, ${i},${j}); return false;">${cellSign}</td>`;
             cellSign = '';
 
         }

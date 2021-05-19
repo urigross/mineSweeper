@@ -3,7 +3,7 @@
 var gBoard;
 var gLevel = {
     SIZE: 4,
-    MINES: 3
+    MINES: 2
 };
 
 function buildBoard(size) {

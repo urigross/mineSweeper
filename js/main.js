@@ -2,7 +2,7 @@
 
 var gGame;
 
-function init() {
+function init(className) {
     gGame = {
         isOn: false,
         shownCount: 0,
@@ -14,7 +14,7 @@ function init() {
     gBoard = buildBoard(gLevel.SIZE);
     console.log(gBoard);
     placeMiners(gBoard);
-    renderBoard(gBoard);
+    renderBoard(gBoard, className);
 };
 
 
@@ -50,28 +50,31 @@ function endGame(isVictory) {
 
 
 
-// Win functions
-
 function isWin() {
     return gLevel.SIZE * gLevel.SIZE === gGame.shownCount + gGame.markedCount;
 }
 
-// function areAllMinesFlagged(board) {
-//     var markedMinersCount = 0;
-//     for (var i = 0; i < board.length; i++) {
-//         var currentRow = board[i];
-//         for (var j = 0; j < currentRow.length; j++) {
-//             if (currentRow[j].isMine && currentRow[j].isMarked)
-//                 markedMinersCount++;
-//         }
 
-//     }
-//     return gGame.markedCount === markedMinersCount;
-// }
+// Set levels
+function setGameLevel(ele) {
+    var lvl = ele.className.substring(0, ele.className.length - 4);
+    switch (lvl) {
+        case 'beginner':
+            gLevel.SIZE = 4;
+            gLevel.MINES = 2;
+            break;
 
-// function isWin() {
-//     if (areAllMinesFlagged(gBoard)) {
-//         var boardTotalCells = gLevel.SIZE * gLevel.SIZE;
-//         return boardTotalCells === gGame.markedCount + gGame.shownCount;
-//     } else return false;
-// };
+        case 'medium':
+            gLevel.SIZE = 8;
+            gLevel.MINES = 12;
+            break;
+        case 'expert':
+            gLevel.SIZE = 12;
+            gLevel.MINES = 30;
+            break;
+        default:
+            console.log(`Error in setLevel(). Value received`, ele.className);
+    }
+    var className = `.${lvl}-cell`;
+    init(className);
+}
