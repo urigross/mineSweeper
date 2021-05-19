@@ -46,4 +46,4 @@ function renderBoard(board) {
 function renderCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
     elCell.innerText = value;
-}
+};

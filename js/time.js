@@ -1,5 +1,6 @@
 'use strict';
 var gstartTimeStamp = null;
+var stopwatchInterval;
 
 function getTimeStamp() {
     var d = new Date();
@@ -14,7 +15,7 @@ function getGameDuration() {
 
 function stopwatch() {
     printStopwatchToScreen(getGameDuration());
-    setTimeout(stopwatch, 1000);
+    stopwatchInterval = setTimeout(stopwatch, 1000);
 };
 
 function printStopwatchToScreen(x) {
