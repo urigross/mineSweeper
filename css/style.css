@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+}
+
+table {
+    height: 190px;
+    width: 190px;
+}
+
+tr {
+    height: 45px;
+    width: 45px;
+}
+
+td {
+    height: 40px;
+    width: 40px;
+    background-color: gray;
+}
