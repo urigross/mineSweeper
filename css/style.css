@@ -21,3 +21,37 @@ td {
 .stopwatch {
     padding-left: 10px;
 }
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 4px 13px;
+    background-color: #e0400f;
+    text-align: center;
+    vertical-align: auto;
+}
+
+button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background: rgb(193, 223, 19);
+    border-radius: 999px;
+    margin: auto;
+    bottom: 10px;
+}

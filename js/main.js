@@ -1,13 +1,15 @@
 'use strict';
 
-var gGame = {
-    isOn: false,
-    shownCount: 0,
-    markedCount: 0,
-    secsPassed: 0
-};
+var gGame;
 
 function init() {
+    gGame = {
+        isOn: false,
+        shownCount: 0,
+        markedCount: 0,
+        secsPassed: 0
+    };
+    closeModal();
     gGame.isOn = true;
     gBoard = buildBoard(gLevel.SIZE);
     console.log(gBoard);
@@ -35,7 +37,6 @@ function cellClicked(elCell, i, j) {
     gGame.shownCount++;
     elCell.style.backgroundColor = "white";
     elCell.innerText = (gBoard[i][j].minesAroundCount);
-    //console.log(`iswin`, isWin());
     if (isWin()) { // Check for win
         endGame(true);
     };
@@ -44,11 +45,7 @@ function cellClicked(elCell, i, j) {
 function endGame(isVictory) {
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
-    if (isVictory) {
-        alert(`you are a winner! You should be working on mine fields!`);
-    } else {
-        alert("Hey .. At least you didn't die from a real Miner\nTry Again !");
-    };
+    printWinModal(isVictory);
 }
 
 
