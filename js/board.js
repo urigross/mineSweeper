@@ -1,5 +1,4 @@
 'use strict';
-const MINE = '💣';
 
 var gBoard;
 var gLevel = {
@@ -27,7 +26,6 @@ function getNewCell(isMine = false) {
         isShown: false,
         isMine,
         isMarked: false
-
     };
     return newCell;
 }
@@ -39,7 +37,6 @@ function getNewCell(isMine = false) {
 //Set mines at random locations 
 //Call setMinesNegsCount() 
 //Return the created board
-
 
 function getMinesNegsCount(board, cellI, cellJ) {
     //Count mines around each cell 

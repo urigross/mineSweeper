@@ -10,9 +10,9 @@ var gGame = {
 function init() {
     gBoard = buildBoard(gLevel.SIZE);
     console.log(gBoard);
-    gBoard[0][0].isMine = true;
-    gBoard[1][1].isMine = true;
-    gBoard[3][3].isMine = true;
+    placeNewMine(gBoard);
+    placeNewMine(gBoard);
+    placeNewMine(gBoard);
     renderBoard(gBoard);
 };
 
@@ -22,6 +22,11 @@ function checkGameOver() {
 };
 
 function cellClicked(elCell, i, j) {
+    if (gBoard[i][j].isMarked) return;
+    if (!gstartTimeStamp) {
+        gstartTimeStamp = getTimeStamp();
+        stopwatch();
+    };
     gBoard[i][j].isShown = true;
     elCell.style.backgroundColor = "white";
     if (gBoard[i][j].isMine) elCell.innerText = MINE; // if it's a mine - render it
@@ -29,9 +34,4 @@ function cellClicked(elCell, i, j) {
         elCell.innerText = (gBoard[i][j].minesAroundCount);
     }
     //Called when a cell (td) is clicked
-};
-
-function cellMarked(elCell) {
-    //Called on right click to mark a cell (suspected to be a mine) 
-    //Search the web (and implement) how to hide the context menu on right click
 };

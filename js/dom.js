@@ -31,7 +31,7 @@ function renderBoard(board) {
                     cellSign = negsCount;
                 }
             }
-            strHTML += `<td onclick="cellClicked(this,${i},${j})">${cellSign}</td>`;
+            strHTML += `<td data-i="${i}" data-j="${j}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(this, ${i},${j}); return false;">${cellSign}</td>`;
             cellSign = '';
 
         }
@@ -42,3 +42,8 @@ function renderBoard(board) {
     elContainer.innerHTML = strHTML;
     //Render the board as a <table> to the page
 };
+
+function renderCell(i, j, value) {
+    var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
+    elCell.innerText = value;
+}

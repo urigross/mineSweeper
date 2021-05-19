@@ -4,11 +4,10 @@ function getAvailablePos(board) {
     var posFound = false;
     while (!posFound) {
         var currentAvailablePos = { i, j }; // Create new obj every time
-        var i = getRandomIntInclusive(1, board.length - 2);
-        var j = getRandomIntInclusive(1, board[0].length - 2);
+        var i = getRandomIntInclusive(0, board.length - 1);
+        var j = getRandomIntInclusive(0, board[0].length - 1);
         var currentBoardPos = board[i][j];
-        console.log(currentBoardPos);
-        if (currentBoardPos === FOOD) {
+        if (!currentBoardPos.isMine) {
             currentAvailablePos.i = i;
             currentAvailablePos.j = j;
             return currentAvailablePos;

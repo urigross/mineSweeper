@@ -17,3 +17,7 @@ td {
     width: 40px;
     background-color: gray;
 }
+
+.stopwatch {
+    padding-left: 10px;
+}
