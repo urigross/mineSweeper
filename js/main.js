@@ -24,9 +24,6 @@ function init() {
 };
 
 
-// function checkGameOver() {
-//     //Game ends when all mines are marked, and all the other cells are shown
-// };
 
 function cellClicked(elCell, i, j) {
     // If it's first move
@@ -55,7 +52,7 @@ function cellClicked(elCell, i, j) {
         } else {
             elCell.innerText = MINE; // if it's a mine - render it
 
-            endGame(false);
+            checkGameOver(false);
             return;
         }
     }
@@ -69,11 +66,11 @@ function cellClicked(elCell, i, j) {
     elCell.style.backgroundColor = "white";
     elCell.innerText = (gBoard[i][j].minesAroundCount);
     if (isWin()) { // Check for win
-        endGame(true);
+        checkGameOver(true);
     };
 };
 
-function endGame(isVictory) {
+function checkGameOver(isVictory) {
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
     if (isVictory) {
