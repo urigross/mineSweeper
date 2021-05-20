@@ -33,10 +33,6 @@ function getNewCell(isMine = false) {
 
 
 
-//Builds the board 
-//Set mines at random locations 
-//Call setMinesNegsCount() 
-//Return the created board
 
 function getMinesNegsCount(board, cellI, cellJ) {
     //Count mines around each cell 

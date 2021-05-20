@@ -10,7 +10,8 @@ function init() {
         shownCount: 0,
         markedCount: 0,
         secsPassed: 0,
-        live: 3
+        live: 3,
+        isHintOn: false
     };
     closeModal();
     renderClearTime();
@@ -37,7 +38,7 @@ function cellClicked(elCell, i, j) {
     }
     if (gBoard[i][j].isMarked || !gGame.isOn || gBoard[i][j].isShown) return; // if cell is marked or shown or game over  -  the mouse will not respone
     // Mine & not first move
-    if (gBoard[i][j].isMine && gGame.shownCount) {
+    if (gBoard[i][j].isMine && gGame.shownCount && !gGame.isHintOn) {
         // Lives....
         if (gGame.live > 0) {
             var blinkInverval = setInterval(() => {
@@ -57,12 +58,10 @@ function cellClicked(elCell, i, j) {
             return;
         }
     }
-    // start Stopwatch
-    // if (!gstartTimeStamp) {
-    //     gstartTimeStamp = getTimeStamp();
-    //     stopwatch();
-    // };
-
+    if (gGame.isHintOn) {
+        reavelTempStNegs(gBoard, i, j);
+        return;
+    }
     revealCell(gBoard, i, j);
     reavel1StNegs(gBoard, i, j); //reaveal neighbours
     gBoard[i][j].isShown = true;
@@ -126,6 +125,20 @@ function reavel1StNegs(board, cellI, cellJ) {
             if (j < 0 || j >= board[i].length) continue; // if it's out of j mat cells don't count
             if (board[i][j].isMarked || board[i][j].isMine || board[i][j].isShown || (i === cellI && j === cellJ)) continue;
             revealCell(board, i, j);
+        };
+    };
+};
+
+function reavelTempStNegs(board, cellI, cellJ) {
+    //Count mines around each cell 
+    //and set the cell's minesAroundCount.
+    for (var i = cellI - 1; i <= cellI + 1; i++) {
+        if (i < 0 || i >= board.length) continue; // if it's out of i mat cells don't count
+        for (var j = cellJ - 1; j <= cellJ + 1; j++) {
+            if (j < 0 || j >= board[i].length) continue; // if it's out of j mat cells don't count
+            if (board[i][j].isMarked || board[i][j].isMine || board[i][j].isShown) continue;
+            renderTempCell(i, j, gBoard[i][j].minesAroundCount);
+
         };
     };
 };

@@ -63,3 +63,7 @@ button {
     width: 65px;
     height: 20px;
 }
+
+.hints img {
+    height: 50px;
+}

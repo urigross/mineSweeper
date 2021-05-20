@@ -1,13 +1,6 @@
 'use strict';
 var gBlinkFlag = true;
 
-function expandShown(board, elCell, i, j) {
-    //When user clicks a cell with no mines around, we need to open not only that cell, 
-    //but also its neighbors. 
-    //NOTE: start with a basic implementation that only opens the non-mine 1st degree neighbors 
-    //BONUS: if you have the time later, try to work more like the real algorithm 
-    //(see description at the Bonuses section below)
-};
 
 function renderBoard(board, isFullTable) {
 
@@ -48,22 +41,27 @@ function renderCell(i, j, value) {
     elCell.style.backgroundColor = 'white';
 };
 
-// function blinkMine(i, j, elCell) {
 
-//     setInterval(() => {
-//         renderCell(i, j, MINE);
-//         setTimeout(elCell.innerText = '', 1000);
+function renderTempCell(i, j, value) {
+    var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
+    elCell.innerText = value;
+    elCell.style.backgroundColor = 'white';
+    setTimeout(() => {
+        elCell.innerText = '';
+        elCell.style.backgroundColor = '';
+        gGame.isHintOn = false;
+    }, 1000, elCell);
+};
 
-//     }, 1000);
-// }
+
+
+
 
 function blinkMineCell(cellEle) {
     if (gBlinkFlag) {
         cellEle.innerText = MINE;
         gBlinkFlag = false;
-    }
-    // document.getElementById("yourId").style.background="yourColor 1";
-    else if (!false) {
+    } else if (!false) {
         cellEle.innerText = '';
         gBlinkFlag = true;
     }
@@ -101,9 +99,7 @@ function blinkMood(sign) {
     if (gBlinkFlag) {
         ele.innerText = sign;
         gBlinkFlag = false;
-    }
-    // document.getElementById("yourId").style.background="yourColor 1";
-    else if (!false) {
+    } else if (!false) {
         ele.innerText = '';
         gBlinkFlag = true;
     }

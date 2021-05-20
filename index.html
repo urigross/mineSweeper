@@ -13,6 +13,11 @@
         <h3>Time:<span class="stopwatch"></span></h3>
         <h3>Lives:<span class="lives"></span></h3>
         <h4>Mood:<span class="mood"></span></h4>
+        <div class="hints">
+            <img class='bulb-1' onclick="bulbOn(1)" src="/img/bulb.jpg">
+            <img class='bulb-2' onclick="bulbOn(2)" src="/img/bulb.jpg">
+            <img class='bulb-3' onclick="bulbOn(3)" src="/img/bulb.jpg">
+        </div>
     </div>
     <div class="board-container"></div>
     <!-- The Modal -->
@@ -32,6 +37,7 @@
         <button class="medium-btn" onclick="setGameLevel(this)">Medium</button>
         <button class="expert-btn" onclick="setGameLevel(this)">Expert</button>
     </div>
+    <script src='js/hint.js'></script>
     <script src='js/lives.js'></script>
     <script src='js/modal.js'></script>
     <script src='js/markedCell.js'></script>

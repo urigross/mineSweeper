@@ -10,7 +10,6 @@ function placeMiners(board) {
 function placeNewMine(board) {
     var availablePos = getAvailablePos(board); // Get Rnd pos.
     addMineToModel(board, availablePos); // Model
-    //  renderCell(availablePos.i, availablePos.j, MINE); // DOM
 };
 
 function addMineToModel(board, pos) {
