@@ -67,4 +67,44 @@ function blinkMineCell(cellEle) {
         cellEle.innerText = '';
         gBlinkFlag = true;
     }
+};
+
+
+
+
+
+
+
+// Moods...
+
+function renderMood(mood) {
+    var str = '';
+    var ele = document.querySelector('.mood');
+    switch (mood) {
+        case 'normal':
+            str = '🙂';
+            break;
+        case 'dead':
+            str = '💀';
+            break;
+        case 'win':
+            str = '😎';
+            break;
+        default:
+            console.log('Error in dom.js renderMood(): mood:', mood);
+    }
+    ele.innerText = str;
+}
+
+function blinkMood(sign) {
+    var ele = document.querySelector('.mood');
+    if (gBlinkFlag) {
+        ele.innerText = sign;
+        gBlinkFlag = false;
+    }
+    // document.getElementById("yourId").style.background="yourColor 1";
+    else if (!false) {
+        ele.innerText = '';
+        gBlinkFlag = true;
+    }
 }

@@ -13,6 +13,7 @@ function init() {
         live: 3
     };
     closeModal();
+    renderClearTime();
     printLivesToScreen(gGame.live);
     gGame.isOn = true;
     gBoard = buildBoard(gLevel.SIZE);
@@ -28,15 +29,17 @@ function init() {
 function cellClicked(elCell, i, j) {
     // If it's first move
     if (!gGame.shownCount) {
+        gstartTimeStamp = getTimeStamp();
+        stopwatch();
         placeMiners(gBoard);
         renderBoard(gBoard, true);
+        renderMood('normal');
     }
     if (gBoard[i][j].isMarked || !gGame.isOn || gBoard[i][j].isShown) return; // if cell is marked or shown or game over  -  the mouse will not respone
     // Mine & not first move
     if (gBoard[i][j].isMine && gGame.shownCount) {
         // Lives....
         if (gGame.live > 0) {
-            console.log(`boom`);
             var blinkInverval = setInterval(() => {
                 blinkMineCell(elCell);
             }, 100, elCell);
@@ -49,15 +52,16 @@ function cellClicked(elCell, i, j) {
             return;
         } else {
             elCell.innerText = MINE; // if it's a mine - render it
+
             endGame(false);
             return;
         }
     }
     // start Stopwatch
-    if (!gstartTimeStamp) {
-        gstartTimeStamp = getTimeStamp();
-        stopwatch();
-    };
+    // if (!gstartTimeStamp) {
+    //     gstartTimeStamp = getTimeStamp();
+    //     stopwatch();
+    // };
 
     revealCell(gBoard, i, j);
     reavel1StNegs(gBoard, i, j); //reaveal neighbours
@@ -72,7 +76,9 @@ function cellClicked(elCell, i, j) {
 function endGame(isVictory) {
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
+    (isVictory) ? renderMood('win'): renderMood('dead');
     printWinModal(isVictory);
+
 }
 
 

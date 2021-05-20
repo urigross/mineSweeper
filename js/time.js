@@ -34,3 +34,7 @@ function getClockFromSeconds(sec) {
     return hours + ':' + minutes + ':' + seconds;
 
 }
+
+function renderClearTime() {
+    document.querySelector('.stopwatch').innerText = '';
+}
