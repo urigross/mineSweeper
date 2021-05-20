@@ -3,8 +3,7 @@ body {
 }
 
 table {
-    height: 190px;
-    width: 190px;
+    margin: auto;
 }
 
 tr {
@@ -16,24 +15,6 @@ td {
     height: 40px;
     width: 40px;
     background-color: gray;
-}
-
-.beginner-cell {
-    height: 40px;
-    width: 40px;
-    background-color: gray;
-}
-
-.medium-cell {
-    height: 35px;
-    width: 50px;
-    background-color: rgb(112, 33, 33);
-}
-
-.expert-cell {
-    height: 20px;
-    width: 50px;
-    background-color: rgb(16, 79, 82);
 }
 
 .stopwatch {
@@ -74,6 +55,11 @@ button {
     bottom: 10px;
 }
 
-.levels-container {
-    display: none;
+.beginner-btn,
+.medium-btn,
+.expert-btn {
+    margin-top: 20px;
+    display: inline;
+    width: 65px;
+    height: 20px;
 }

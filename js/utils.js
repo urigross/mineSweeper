@@ -7,7 +7,7 @@ function getAvailablePos(board) {
         var i = getRandomIntInclusive(0, board.length - 1);
         var j = getRandomIntInclusive(0, board[0].length - 1);
         var currentBoardPos = board[i][j];
-        if (!currentBoardPos.isMine) {
+        if (!currentBoardPos.isMine && !(i == gUserIpos && j == gUserJpos)) {
             currentAvailablePos.i = i;
             currentAvailablePos.j = j;
             return currentAvailablePos;

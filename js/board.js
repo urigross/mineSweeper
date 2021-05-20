@@ -52,3 +52,9 @@ function getMinesNegsCount(board, cellI, cellJ) {
     }
     return negsCount;
 };
+
+function RevealedCellToModel(board, i, j) {
+    board[i][j].isShown = true;
+    gGame.shownCount++;
+
+}; // model
