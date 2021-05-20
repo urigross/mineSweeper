@@ -10,7 +10,8 @@ function getTimeStamp() {
 
 function getGameDuration() {
     var endGameTimeStamp = getTimeStamp(); //Get CurrentTime
-    return endGameTimeStamp - gstartTimeStamp;
+    gGame.time = endGameTimeStamp - gstartTimeStamp
+    return gGame.time;
 };
 
 function stopwatch() {

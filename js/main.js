@@ -11,7 +11,8 @@ function init() {
         markedCount: 0,
         secsPassed: 0,
         live: 3,
-        isHintOn: false
+        isHintOn: false,
+        time: null
     };
     closeModal();
     renderClearTime();
@@ -75,7 +76,10 @@ function cellClicked(elCell, i, j) {
 function endGame(isVictory) {
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
-    (isVictory) ? renderMood('win'): renderMood('dead');
+    if (isVictory) {
+        renderMood('win');
+        setBestScoreLocSt();
+    } else renderMood('dead');
     printWinModal(isVictory);
 
 }
