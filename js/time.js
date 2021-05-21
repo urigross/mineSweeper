@@ -15,13 +15,10 @@ function getGameDuration() {
 };
 
 function stopwatch() {
-    printStopwatchToScreen(getGameDuration());
+    renderStopWatch(getGameDuration());
     stopwatchInterval = setTimeout(stopwatch, 1000);
 };
 
-function printStopwatchToScreen(x) {
-    document.querySelector('.stopwatch').innerHTML = getClockFromSeconds(x);
-}
 
 function getClockFromSeconds(sec) {
     var sec_num = parseInt(sec, 10);

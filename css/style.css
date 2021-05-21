@@ -67,3 +67,7 @@ button {
 .hints img {
     height: 50px;
 }
+
+.mood-container {
+    margin: auto;
+}

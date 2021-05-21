@@ -59,9 +59,11 @@ function renderTempCell(i, j, value) {
 
 function blinkMineCell(cellEle) {
     if (gBlinkFlag) {
+        renderMood('dead');
         cellEle.innerText = MINE;
         gBlinkFlag = false;
     } else if (!false) {
+        renderMood('normal');
         cellEle.innerText = '';
         gBlinkFlag = true;
     }
@@ -103,4 +105,10 @@ function blinkMood(sign) {
         ele.innerText = '';
         gBlinkFlag = true;
     }
+}
+
+// StopWatch
+
+function renderStopWatch(clock) {
+    document.querySelector('.stopwatch').innerHTML = getClockFromSeconds(clock);
 }

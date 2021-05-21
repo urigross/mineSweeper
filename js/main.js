@@ -12,32 +12,34 @@ function init() {
         secsPassed: 0,
         live: 3,
         isHintOn: false,
-        time: null
+        time: null,
     };
     closeModal();
     renderClearTime();
+    initBulbs();
     printLivesToScreen(gGame.live);
     gGame.isOn = true;
     gBoard = buildBoard(gLevel.SIZE);
     console.log(gBoard);
-    renderBoard(gBoard, false);
+    renderBoard(gBoard, false); //  True/False para. means with or without cell content
+    renderMood('normal');
 };
 
 
 
 function cellClicked(elCell, i, j) {
     // If it's first move
+    if (gBoard[i][j].isMarked || !gGame.isOn || gBoard[i][j].isShown) return; // if cell is marked or shown or game over  -  the mouse will not respone
     if (!gGame.shownCount) {
-        gstartTimeStamp = getTimeStamp();
-        stopwatch();
+        gstartTimeStamp = getTimeStamp(); // start stopwatch
+        stopwatch(); // stopwatch to DOM
         placeMiners(gBoard);
         renderBoard(gBoard, true);
-        renderMood('normal');
+        // renderMood('normal');
     }
-    if (gBoard[i][j].isMarked || !gGame.isOn || gBoard[i][j].isShown) return; // if cell is marked or shown or game over  -  the mouse will not respone
-    // Mine & not first move
+    // Mine
     if (gBoard[i][j].isMine && gGame.shownCount && !gGame.isHintOn) {
-        // Lives....
+        // Mine and have more Lives
         if (gGame.live > 0) {
             var blinkInverval = setInterval(() => {
                 blinkMineCell(elCell);
@@ -48,10 +50,11 @@ function cellClicked(elCell, i, j) {
             }, 3000);
             gGame.live--;
             printLivesToScreen(gGame.live);
+            console.log('gGame.shownCount', gGame.shownCount, ' gGame.markedCount ', gGame.markedCount, ' gGame.isHintOn ', gGame.isHintOn);
             return;
+            // mine with no lives
         } else {
             elCell.innerText = MINE; // if it's a mine - render it
-
             checkGameOver(false);
             return;
         }
@@ -108,8 +111,7 @@ function setGameLevel(ele) {
         default:
             console.log(`Error in setLevel(). Value received`, ele.className);
     }
-    //var className = `${lvl}-tbl`;
-    init();
+    checkGameOver(false);
 }
 
 function revealCell(board, i, j) {

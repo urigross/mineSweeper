@@ -5,7 +5,7 @@ var gLevel = {
     SIZE: 4,
     MINES: 2
 };
-
+// Build a table with non-mine cells to model
 function buildBoard(size) {
     var board = [];
     for (var i = 0; i < size; i++) {

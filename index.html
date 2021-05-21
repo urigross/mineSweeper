@@ -12,11 +12,13 @@
         <h1>Mine-Sweeper Game</h1>
         <h3>Time:<span class="stopwatch"></span></h3>
         <h3>Lives:<span class="lives"></span></h3>
-        <h4>Mood:<span class="mood"></span></h4>
+        <div class="mood-container">
+            <h4 class="mood-text">Mood:<span class="mood"></span></h4>
+        </div>
         <div class="hints">
-            <img class='bulb-1' onclick="bulbOn(1)" src="img/bulb.jpg">
-            <img class='bulb-2' onclick="bulbOn(2)" src="img/bulb.jpg">
-            <img class='bulb-3' onclick="bulbOn(3)" src="img/bulb.jpg">
+            <img class='bulb' onclick="bulbOn(this)" src="img/bulb.jpg">
+            <img class='bulb' onclick="bulbOn(this)" src="img/bulb.jpg">
+            <img class='bulb' onclick="bulbOn(this)" src="img/bulb.jpg">
         </div>
     </div>
     <div class="board-container"></div>
