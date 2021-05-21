@@ -20,7 +20,7 @@ function cellMarked(ele, i, j) {
         ele.innerText = MARKED;
         gGame.markedCount++;
         if (isWin()) { // Check for win
-            endGame(true);
+            checkGameOver(true);
         };
     }
     return false; // preventing from menu to popup
