@@ -2,6 +2,10 @@
 
 // Bulb/hint logic
 function bulbOn(ele) {
+    if (!gGame.shownCount && !gGame.markedCount) {
+        alert('Make your move in the board first.');
+        return;
+    }
     if (ele.className === 'bulb') {
         ele.src = "img/bulb-light.jpg";
         ele.className += `-on`;
