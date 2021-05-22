@@ -10,7 +10,8 @@
 <body onload="init()">
     <div class="header">
         <h1>Mine-Sweeper Game</h1>
-        <h3>Time:<span class="stopwatch"></span></h3>
+        <h3 class="best-time">Best Time:<span class="best-time-result"></span></h3>
+        <h4>Current Game Time:<span class="stopwatch"></span></h4>
         <h3>Lives:<span class="lives"></span></h3>
         <div class="mood-container">
             <h4 class="mood-text">Mood:<span class="mood"></span></h4>
@@ -39,6 +40,22 @@
         <button class="medium-btn" onclick="setGameLevel(this)">Medium</button>
         <button class="expert-btn" onclick="setGameLevel(this)">Expert</button>
     </div>
+    <footer>
+        <section class="footer">
+            <video src="http://phpcoder.tech/html-css/Smoke.mp4" autoplay muted></video>
+            <h1>
+                <span>U</span>
+                <span>R</span>
+                <span>I</span>
+                <span> </span>
+                <span>G</span>
+                <span>R</span>
+                <span>O</span>
+                <span>S</span>
+                <span>S</span>
+            </h1>
+        </section>
+    </footer>
     <script src='js/localStorage.js'></script>
     <script src='js/hint.js'></script>
     <script src='js/lives.js'></script>
@@ -50,6 +67,7 @@
     <script src="js/board.js"></script>
     <script src="js/dom.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html>

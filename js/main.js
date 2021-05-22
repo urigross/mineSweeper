@@ -18,6 +18,7 @@ function init() {
     };
     closeModal();
     renderClearTime();
+    renderBesTime();
     initBulbs();
     printLivesToScreen(gGame.live);
     gGame.isOn = true;

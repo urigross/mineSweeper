@@ -23,17 +23,4 @@ function initBulbs() {
 
 
     }
-    // for (var i = 0; i < img.length; i++) {
-    //     console.log(i);
-    //     img.classList.remove('bulb-on');
-    // }
-    // div.classList.toggle("visible");
-
-    // const img = document.querySelector(`img`);
-    // if (img.classList.contains('bulb-on')) {
-    //     var ele = document.querySelector(`.bulb-on`);
-    //     ele.src = 'img/bulb.jpg';
-    //     ele.className = '.bulb';
-    //     gGame.isHintOn = false;
-    // }
 }

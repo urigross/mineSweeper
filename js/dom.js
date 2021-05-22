@@ -104,11 +104,18 @@ function blinkMood(sign) {
     } else if (!false) {
         ele.innerText = '';
         gBlinkFlag = true;
-    }
-}
+    };
+};
 
 // StopWatch
 
 function renderStopWatch(clock) {
     document.querySelector('.stopwatch').innerHTML = getClockFromSeconds(clock);
-}
+};
+
+//Prints to screen bestTimeduration with only 2 places after dots rounding
+function renderBesTime() {
+    var bestTimeElement = document.querySelector('.best-time-result');
+    bestTimeElement.innerText = getClockFromSeconds(Number(localStorage.getItem('bestTime')));
+
+};
