@@ -1,3 +1,5 @@
+// TODO: erase 0 from dom
+// Bonus Tasks
 'use strict';
 
 var gGame;
