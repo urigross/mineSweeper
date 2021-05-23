@@ -5,6 +5,14 @@
 var gGame;
 var gUserIpos;
 var gUserJpos;
+//Game Sounds
+const GAME_MUSIC = new Audio('sounds/solve_the_puzzle.ogg');
+const CLICK_SND = new Audio('sounds/click.wav');
+const EXPLOSION_SND = new Audio('sounds/explosion_sound.wav');
+const GAME_OVER_SND = new Audio('sounds/game_over.wav');
+const SMALL_WIN_SND = new Audio('sounds/small_win.wav');
+const BIG_WIN_SND = new Audio('sounds/big_win.wav');
+
 
 function init() {
     gGame = {
@@ -39,11 +47,14 @@ function cellClicked(elCell, i, j) {
         stopwatch(); // stopwatch to DOM
         placeMiners(gBoard);
         renderBoard(gBoard, true);
+        GAME_MUSIC.volume = 0.3;
+        GAME_MUSIC.play();
     }
     // Mine
     if (gBoard[i][j].isMine && gGame.shownCount && !gGame.isHintOn) {
         // Mine and have more Lives
         if (gGame.live > 0) {
+            EXPLOSION_SND.play();
             var blinkInverval = setInterval(() => {
                 blinkMineCell(elCell);
             }, 100, elCell);
@@ -56,6 +67,7 @@ function cellClicked(elCell, i, j) {
             return;
             // mine with no lives
         } else {
+            EXPLOSION_SND.play();
             elCell.style.trasition = "0.5s";
             elCell.innerText = MINE; // if it's a mine - render it
             checkGameOver(false);
@@ -78,9 +90,13 @@ function checkGameOver(isVictory) {
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
     if (isVictory) {
+        if (gLevel.SIZE === 12) BIG_WIN_SND.play();
+        SMALL_WIN_SND.play();
         renderMood('win');
         setBestScoreLocSt();
     } else renderMood('dead');
+    GAME_MUSIC.pause();
+    GAME_OVER_SND.play();
     printWinModal(isVictory);
 }
 
@@ -116,6 +132,7 @@ function setGameLevel(ele) {
 function revealCell(board, i, j) {
     RevealedCellToModel(board, i, j); // model
     renderCell(i, j, gBoard[i][j].minesAroundCount);
+    CLICK_SND.play();
 };
 
 function reavel1StNegs(board, cellI, cellJ) {
