@@ -108,7 +108,7 @@ function checkGameOver(isVictory) {
 }
 
 function isWin() {
-    return gLevel.SIZE * gLevel.SIZE === gGame.shownCount + gGame.markedCount;
+    return (gLevel.SIZE * gLevel.SIZE === gGame.shownCount + gGame.markedCount) && gGame.markedCount === gLevel.MINES;
 }
 // Set levels
 function setGameLevel(ele) {
