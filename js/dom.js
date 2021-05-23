@@ -35,17 +35,20 @@ function renderBoard(board, isFullTable) {
 
 function renderCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
-    // if (!value) value = '';
+    if (!value) value = '';
+    elCell.style.trasition = "0.5s";
     elCell.innerText = value;
     elCell.style.backgroundColor = 'white';
 };
 
 function renderTempCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
-    // if (!value) value = '';
+    if (!value) value = '';
+    elCell.style.trasition = "0.5s";
     elCell.innerText = value;
     elCell.style.backgroundColor = 'white';
     setTimeout(() => {
+        elCell.style.trasition = "0.5s";
         elCell.innerText = '';
         elCell.style.backgroundColor = '';
         gGame.isHintOn = false;

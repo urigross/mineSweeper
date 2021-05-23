@@ -35,7 +35,6 @@ function cellClicked(elCell, i, j) {
         stopwatch(); // stopwatch to DOM
         placeMiners(gBoard);
         renderBoard(gBoard, true);
-        // renderMood('normal');
     }
     // Mine
     if (gBoard[i][j].isMine && gGame.shownCount && !gGame.isHintOn) {
@@ -53,6 +52,7 @@ function cellClicked(elCell, i, j) {
             return;
             // mine with no lives
         } else {
+            elCell.style.trasition = "0.5s";
             elCell.innerText = MINE; // if it's a mine - render it
             checkGameOver(false);
             return;
@@ -65,9 +65,6 @@ function cellClicked(elCell, i, j) {
     }
     revealCell(gBoard, i, j);
     reavel1StNegs(gBoard, i, j); //reaveal neighbours
-    gBoard[i][j].isShown = true;
-    elCell.style.backgroundColor = "white";
-    elCell.innerText = (gBoard[i][j].minesAroundCount);
     if (isWin()) { // Check for win
         checkGameOver(true);
     };
