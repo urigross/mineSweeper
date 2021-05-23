@@ -7,5 +7,4 @@ function printLivesToScreen(life) {
     }
     var ele = document.querySelector('.lives');
     ele.innerText = str;
-
 }

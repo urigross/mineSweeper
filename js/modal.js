@@ -11,7 +11,6 @@ function closeModal() {
     eModal.style.display = "none";
 };
 
-
 function printWinModal(isVictoy) {
     openModal();
     var ele = document.querySelector('.modal-header h1');

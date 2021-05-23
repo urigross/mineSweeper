@@ -45,6 +45,7 @@ td {
 }
 
 button {
+    cursor: pointer;
     position: relative;
     display: flex;
     justify-content: center;
@@ -68,6 +69,7 @@ button {
 
 .hints img {
     height: 50px;
+    cursor: pointer;
 }
 
 .mood-container {
@@ -107,9 +109,11 @@ video {
     letter-spacing: 0.2em;
 }
 
-.footer h1 span {
+.footer h1 a span {
     display: inline-block;
     animation: animate 1s linear forwards;
+    cursor: pointer;
+    color: #ddd;
 }
 
 @keyframes animate {
@@ -125,38 +129,38 @@ video {
     }
 }
 
-.footer h1 span:nth-child(1) {
+.footer h1 a span:nth-child(1) {
     animation-delay: 1s;
 }
 
-.footer h1 span:nth-child(2) {
+.footer h1 a span:nth-child(2) {
     animation-delay: 2s;
 }
 
-.footer h1 span:nth-child(3) {
+.footer h1 a span:nth-child(3) {
     animation-delay: 2.5s;
 }
 
-.footer h1 span:nth-child(4) {
+.footer h1 a span:nth-child(4) {
     animation-delay: 3s;
 }
 
-.footer h1 span:nth-child(5) {
+.footer h1 a span:nth-child(5) {
     animation-delay: 3.5s;
 }
 
-.footer h1 span:nth-child(6) {
+.footer h1 a span:nth-child(6) {
     animation-delay: 4s;
 }
 
-.footer h1 span:nth-child(7) {
+.footer h1 a span:nth-child(7) {
     animation-delay: 4.5s;
 }
 
-.footer h1 span:nth-child(8) {
+.footer h1 a span:nth-child(8) {
     animation-delay: 5s;
 }
 
-.footer h1 span:nth-child(9) {
+.footer h1 a span:nth-child(9) {
     animation-delay: 5.5s;
 }

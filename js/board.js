@@ -14,13 +14,10 @@ function buildBoard(size) {
             board[i][j] = getNewCell(false);
         }
     };
-
-
     return board;
 }
 
 function getNewCell(isMine = false) {
-
     var newCell = {
         minesAroundCount: 0,
         isShown: false,
@@ -29,10 +26,6 @@ function getNewCell(isMine = false) {
     };
     return newCell;
 }
-
-
-
-
 
 function getMinesNegsCount(board, cellI, cellJ) {
     //Count mines around each cell 

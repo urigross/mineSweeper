@@ -19,7 +19,6 @@ function stopwatch() {
     stopwatchInterval = setTimeout(stopwatch, 1000);
 };
 
-
 function getClockFromSeconds(sec) {
     var sec_num = parseInt(sec, 10);
     var mil_sec = Math.floor(sec_num * 3600);
@@ -30,7 +29,6 @@ function getClockFromSeconds(sec) {
     if (minutes < 10) { minutes = "0" + minutes; }
     if (seconds < 10) { seconds = "0" + seconds; }
     return hours + ':' + minutes + ':' + seconds;
-
 }
 
 function renderClearTime() {

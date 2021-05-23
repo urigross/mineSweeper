@@ -12,6 +12,6 @@ function setBestScoreLocSt() {
         //     clearInterval(blinkInverval);
         //     elCell.innerText = '';
         // }, 3000); //////// change and continue......
-        renderBesTime();
+        renderBesTime(true);
     }
 }

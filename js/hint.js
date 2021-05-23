@@ -16,7 +16,6 @@ function bulbOn(ele) {
 function initBulbs() {
     const img = document.querySelectorAll('.hints img');
     //img.classList.remove;
-    console.log(img[0]);
     for (var i = 0; i < img.length; i++) {
         img[i].classList.remove('bulb-on');
         img[i].src = "img/bulb.jpg";

@@ -23,16 +23,13 @@ function init() {
     printLivesToScreen(gGame.live);
     gGame.isOn = true;
     gBoard = buildBoard(gLevel.SIZE);
-    console.log(gBoard);
     renderBoard(gBoard, false); //  True/False para. means with or without cell content
     renderMood('normal');
 };
 
-
-
 function cellClicked(elCell, i, j) {
-    // If it's first move
     if (gBoard[i][j].isMarked || !gGame.isOn || gBoard[i][j].isShown) return; // if cell is marked or shown or game over  -  the mouse will not respone
+    // If it's first move
     if (!gGame.shownCount) {
         gstartTimeStamp = getTimeStamp(); // start stopwatch
         stopwatch(); // stopwatch to DOM
@@ -53,7 +50,6 @@ function cellClicked(elCell, i, j) {
             }, 3000);
             gGame.live--;
             printLivesToScreen(gGame.live);
-            console.log('gGame.shownCount', gGame.shownCount, ' gGame.markedCount ', gGame.markedCount, ' gGame.isHintOn ', gGame.isHintOn);
             return;
             // mine with no lives
         } else {
@@ -62,6 +58,7 @@ function cellClicked(elCell, i, j) {
             return;
         }
     }
+    // If hint is on..
     if (gGame.isHintOn) {
         reavelTempStNegs(gBoard, i, j);
         return;
@@ -84,16 +81,11 @@ function checkGameOver(isVictory) {
         setBestScoreLocSt();
     } else renderMood('dead');
     printWinModal(isVictory);
-
 }
-
-
 
 function isWin() {
     return gLevel.SIZE * gLevel.SIZE === gGame.shownCount + gGame.markedCount;
 }
-
-
 // Set levels
 function setGameLevel(ele) {
     var lvl = ele.className.substring(0, ele.className.length - 4);
@@ -114,7 +106,10 @@ function setGameLevel(ele) {
         default:
             console.log(`Error in setLevel(). Value received`, ele.className);
     }
-    checkGameOver(false);
+    // Reset Game procedure
+    gGame.isOn = false;
+    clearInterval(stopwatchInterval);
+    init();
 }
 
 function revealCell(board, i, j) {

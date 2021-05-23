@@ -1,9 +1,7 @@
 'use strict';
 var gBlinkFlag = true;
 
-
 function renderBoard(board, isFullTable) {
-
     var strHTML = `<table border="1"><tbody>`;
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>';
@@ -20,12 +18,12 @@ function renderBoard(board, isFullTable) {
                     cellSign = MINE;
                 } else {
                     cellSign = negsCount;
+                    if (!cellSign) cellSign = '';
                 }
             }
             if (!isFullTable) cellSign = '';
             strHTML += `<td data-i="${i}" data-j="${j}" onclick="cellClicked(this,${i},${j})" oncontextmenu="cellMarked(this, ${i},${j}); return false;">${cellSign}</td>`;
             cellSign = '';
-
         }
         strHTML += '</tr>'
     }
@@ -37,13 +35,14 @@ function renderBoard(board, isFullTable) {
 
 function renderCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
+    if (!value) value = '';
     elCell.innerText = value;
     elCell.style.backgroundColor = 'white';
 };
 
-
 function renderTempCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
+    if (!value) value = '';
     elCell.innerText = value;
     elCell.style.backgroundColor = 'white';
     setTimeout(() => {
@@ -52,10 +51,6 @@ function renderTempCell(i, j, value) {
         gGame.isHintOn = false;
     }, 1000, elCell);
 };
-
-
-
-
 
 function blinkMineCell(cellEle) {
     if (gBlinkFlag) {
@@ -68,15 +63,7 @@ function blinkMineCell(cellEle) {
         gBlinkFlag = true;
     }
 };
-
-
-
-
-
-
-
 // Moods...
-
 function renderMood(mood) {
     var str = '';
     var ele = document.querySelector('.mood');
@@ -106,16 +93,13 @@ function blinkMood(sign) {
         gBlinkFlag = true;
     };
 };
-
 // StopWatch
-
 function renderStopWatch(clock) {
     document.querySelector('.stopwatch').innerHTML = getClockFromSeconds(clock);
 };
-
 //Prints to screen bestTimeduration with only 2 places after dots rounding
-function renderBesTime() {
+function renderBesTime(isNewBestTime) {
     var bestTimeElement = document.querySelector('.best-time-result');
     bestTimeElement.innerText = getClockFromSeconds(Number(localStorage.getItem('bestTime')));
-
+    (isNewBestTime) ? bestTimeElement.style.color = "red": bestTimeElement.style.color = "black";
 };
