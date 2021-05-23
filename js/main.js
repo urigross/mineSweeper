@@ -12,6 +12,7 @@ const EXPLOSION_SND = new Audio('sounds/explosion_sound.wav');
 const GAME_OVER_SND = new Audio('sounds/game_over.wav');
 const SMALL_WIN_SND = new Audio('sounds/small_win.wav');
 const BIG_WIN_SND = new Audio('sounds/big_win.wav');
+var volLvl = 0.2;
 
 
 function init() {
@@ -47,7 +48,7 @@ function cellClicked(elCell, i, j) {
         stopwatch(); // stopwatch to DOM
         placeMiners(gBoard);
         renderBoard(gBoard, true);
-        GAME_MUSIC.volume = 0.3;
+        GAME_MUSIC.volume = volLvl;
         GAME_MUSIC.play();
     }
     // Mine
@@ -67,7 +68,7 @@ function cellClicked(elCell, i, j) {
             return;
             // mine with no lives
         } else {
-            EXPLOSION_SND.volume = 0.3;
+            EXPLOSION_SND.volume = volLvl;
             EXPLOSION_SND.play();
             elCell.style.trasition = "0.5s";
             elCell.innerText = MINE; // if it's a mine - render it
@@ -92,16 +93,16 @@ function checkGameOver(isVictory) {
     clearInterval(stopwatchInterval);
     if (isVictory) {
         if (gLevel.SIZE === 12) {
-            BIG_WIN_SND.volume = 0.3;
+            BIG_WIN_SND.volume = volLvl;
             BIG_WIN_SND.play();
         };
-        SMALL_WIN_SND.volume = 0.3;
+        SMALL_WIN_SND.volume = volLvl;
         SMALL_WIN_SND.play();
         renderMood('win');
         setBestScoreLocSt();
     } else renderMood('dead');
     GAME_MUSIC.pause();
-    GAME_OVER_SND.volume = 0.3;
+    GAME_OVER_SND.volume = volLvl;
     GAME_OVER_SND.play();
     printWinModal(isVictory);
 }
@@ -138,7 +139,7 @@ function setGameLevel(ele) {
 function revealCell(board, i, j) {
     RevealedCellToModel(board, i, j); // model
     renderCell(i, j, gBoard[i][j].minesAroundCount);
-    CLICK_SND.volume = 0.3;
+    CLICK_SND.volume = volLvl;
     CLICK_SND.play();
 };
 
