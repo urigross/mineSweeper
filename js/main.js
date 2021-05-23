@@ -1,4 +1,4 @@
-// TODO: erase 0 from dom
+// TODO: add volume button
 // Bonus Tasks
 'use strict';
 
