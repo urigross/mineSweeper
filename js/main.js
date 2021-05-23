@@ -67,6 +67,7 @@ function cellClicked(elCell, i, j) {
             return;
             // mine with no lives
         } else {
+            EXPLOSION_SND.volume = 0.3;
             EXPLOSION_SND.play();
             elCell.style.trasition = "0.5s";
             elCell.innerText = MINE; // if it's a mine - render it
@@ -90,12 +91,17 @@ function checkGameOver(isVictory) {
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
     if (isVictory) {
-        if (gLevel.SIZE === 12) BIG_WIN_SND.play();
+        if (gLevel.SIZE === 12) {
+            BIG_WIN_SND.volume = 0.3;
+            BIG_WIN_SND.play();
+        };
+        SMALL_WIN_SND.volume = 0.3;
         SMALL_WIN_SND.play();
         renderMood('win');
         setBestScoreLocSt();
     } else renderMood('dead');
     GAME_MUSIC.pause();
+    GAME_OVER_SND.volume = 0.3;
     GAME_OVER_SND.play();
     printWinModal(isVictory);
 }
@@ -132,6 +138,7 @@ function setGameLevel(ele) {
 function revealCell(board, i, j) {
     RevealedCellToModel(board, i, j); // model
     renderCell(i, j, gBoard[i][j].minesAroundCount);
+    CLICK_SND.volume = 0.3;
     CLICK_SND.play();
 };
 
