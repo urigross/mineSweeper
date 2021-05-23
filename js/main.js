@@ -16,7 +16,6 @@ function init() {
         isHintOn: false,
         time: null,
     };
-    closeModal();
     renderClearTime();
     renderBesTime();
     initBulbs();
@@ -26,6 +25,11 @@ function init() {
     renderBoard(gBoard, false); //  True/False para. means with or without cell content
     renderMood('normal');
 };
+
+function endGame() {
+    closeModal();
+    init();
+}
 
 function cellClicked(elCell, i, j) {
     if (gBoard[i][j].isMarked || !gGame.isOn || gBoard[i][j].isShown) return; // if cell is marked or shown or game over  -  the mouse will not respone
@@ -106,7 +110,7 @@ function setGameLevel(ele) {
     // Reset Game procedure
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
-    init();
+    endGame();
 }
 
 function revealCell(board, i, j) {

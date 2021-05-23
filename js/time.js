@@ -21,7 +21,7 @@ function stopwatch() {
 
 function getClockFromSeconds(sec) {
     var sec_num = parseInt(sec, 10);
-    var mil_sec = Math.floor(sec_num * 3600);
+    // var mil_sec = Math.floor(sec_num * 3600);
     var hours = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);

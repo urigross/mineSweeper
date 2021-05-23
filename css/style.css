@@ -38,6 +38,10 @@ td {
     cursor: pointer;
 }
 
+.modal {
+    display: none;
+}
+
 .modal-header {
     padding: 4px 13px;
     background-color: #e0400f;

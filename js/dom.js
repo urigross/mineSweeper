@@ -38,7 +38,8 @@ function renderCell(i, j, value) {
     if (!value) value = '';
     elCell.style.trasition = "0.5s";
     elCell.innerText = value;
-    elCell.style.backgroundColor = 'white';
+    elCell.style.backgroundColor = "white";
+    elCell.style.color = "black"
 };
 
 function renderTempCell(i, j, value) {
@@ -46,7 +47,8 @@ function renderTempCell(i, j, value) {
     if (!value) value = '';
     elCell.style.trasition = "0.5s";
     elCell.innerText = value;
-    elCell.style.backgroundColor = 'white';
+    elCell.style.backgroundColor = "white";
+    elCell.style.color = "black"
     setTimeout(() => {
         elCell.style.trasition = "0.5s";
         elCell.innerText = '';
@@ -104,5 +106,5 @@ function renderStopWatch(clock) {
 function renderBesTime(isNewBestTime) {
     var bestTimeElement = document.querySelector('.best-time-result');
     bestTimeElement.innerText = getClockFromSeconds(Number(localStorage.getItem('bestTime')));
-    (isNewBestTime) ? bestTimeElement.style.color = "red": bestTimeElement.style.color = "black";
+    (isNewBestTime) ? bestTimeElement.style.color = "red": bestTimeElement.style.color = "white";
 };
