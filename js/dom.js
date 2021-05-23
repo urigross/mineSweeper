@@ -18,7 +18,7 @@ function renderBoard(board, isFullTable) {
                     cellSign = MINE;
                 } else {
                     cellSign = negsCount;
-                    if (!cellSign) cellSign = '';
+                    // if (!cellSign) cellSign = '';
                 }
             }
             if (!isFullTable) cellSign = '';
@@ -35,14 +35,14 @@ function renderBoard(board, isFullTable) {
 
 function renderCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
-    if (!value) value = '';
+    // if (!value) value = '';
     elCell.innerText = value;
     elCell.style.backgroundColor = 'white';
 };
 
 function renderTempCell(i, j, value) {
     var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`);
-    if (!value) value = '';
+    // if (!value) value = '';
     elCell.innerText = value;
     elCell.style.backgroundColor = 'white';
     setTimeout(() => {
