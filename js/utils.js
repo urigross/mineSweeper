@@ -2,7 +2,7 @@
 
 function getAvailablePos(board) {
     var posFound = false;
-    while (!posFound) {
+    while (i === gUserIpos && j === gUserJpos || currentBoardPos.isMine) {
         var currentAvailablePos = { i, j }; // Create new obj every time
         var i = getRandomIntInclusive(0, board.length - 1);
         var j = getRandomIntInclusive(0, board[0].length - 1);

@@ -14,9 +14,6 @@ function closeModal() {
 function printWinModal(isVictoy) {
     openModal();
     var ele = document.querySelector('.modal-header h1');
-    if (isVictoy) {
-        ele.innerText = `you are a winner! You should be working on mine fields!`;
-    } else {
-        ele.innerText = `Ohh.. you lost!\nAt least you didn't die from a real Miner`;
-    }
+    ele.innerText = isVictoy ? `you are a winner! You should be working on mine fields!` :
+        `Ohh.. you lost!\nAt least you didn't die from a real Miner`;
 };

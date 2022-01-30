@@ -72,7 +72,7 @@ function cellClicked(elCell, i, j) {
             EXPLOSION_SND.play();
             elCell.style.trasition = "0.5s";
             elCell.innerText = MINE; // if it's a mine - render it
-            checkGameOver(false);
+            checkGameOver(false); // lost in game
             return;
         }
     }
@@ -83,8 +83,8 @@ function cellClicked(elCell, i, j) {
     }
     revealCell(gBoard, i, j);
     reavel1StNegs(gBoard, i, j); //reaveal neighbours
-    if (isWin()) { // Check for win
-        checkGameOver(true);
+    if (isWin()) { // if its  win
+        checkGameOver(true); // winner
     };
 };
 
@@ -111,29 +111,51 @@ function isWin() {
     return (gLevel.SIZE * gLevel.SIZE === gGame.shownCount + gGame.markedCount) && gGame.markedCount === gLevel.MINES;
 }
 // Set levels
-function setGameLevel(ele) {
-    var lvl = ele.className.substring(0, ele.className.length - 4);
+function setGameLevel(eleName) {
+    var lvl = eleName.className.substring(0, eleName.className.length - 4);
     switch (lvl) {
         case 'beginner':
             gLevel.SIZE = 4;
             gLevel.MINES = 2;
+            // if( screen.width < 480){
+            //     var tdEle = document.getElementsByTagName("TD");
+            //       tdEle.style.height = '40px';
+            //     var trEle = document.getElementsByTagName('TR');
+            //        trEle.style.height = '40px';         
+            // }
             break;
 
         case 'medium':
             gLevel.SIZE = 8;
             gLevel.MINES = 12;
+            // if( screen.width < 480){
+            //     var tdEle = document.getElementsByTagName("TD");
+            //       tdEle.style.height = '40px';
+            //     var trEle = document.getElementsByTagName('TR');
+            //       trEle.style.height = '40px';         
+            // }
             break;
-        case 'expert':
-            gLevel.SIZE = 12;
-            gLevel.MINES = 30;
+            case 'expert':
+                gLevel.SIZE = 12;
+                gLevel.MINES = 30;
+                // Make table smaller  
+        //         if( screen.width < 480){
+        //        console.log('hi exp')
+        //       var tdEle = document.getElementsByTagName("TD");
+        //       tdEle.style.height = '25px';
+        //       var trEle = document.getElementsByTagName('TR');
+        //       trEle.style.height = '25px'; 
+                      
+        //    }
+        //    else 
             break;
         default:
-            console.log(`Error in setLevel(). Value received`, ele.className);
+            console.log(`Error in setLevel(). Value received`, eleName.className);
     }
     // Reset Game procedure
     gGame.isOn = false;
     clearInterval(stopwatchInterval);
-    endGame();
+    endGame(); // End game without win
 }
 
 function revealCell(board, i, j) {

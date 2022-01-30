@@ -8,19 +8,28 @@
 <link rel="icon" type="image/png" href="#" />
 
 <body onload="init()">
+    <video src="http://phpcoder.tech/html-css/Smoke.mp4" autoplay muted loop id="myVideo"></video>
     <div class="header">
         <h1>Mine-Sweeper Game</h1>
         <h3 class="best-time">Best Time:<span class="best-time-result"></span></h3>
         <h4>Current Game Time:<span class="stopwatch"></span></h4>
-        <h3>Lives:<span class="lives"></span></h3>
-        <div class="mood-container">
-            <h4 class="mood-text">Mood:<span class="mood"></span></h4>
+        <div class="lives-mood-container">
+            <h3>Lives:<span class="lives"></span></h3>
+
+            <div class="mood-container">
+                <h4 class="mood-text">Mood:<span class="mood"></span></h4>
+            </div>
         </div>
         <div class="hints">
             <img onclick="bulbOn(this)" src="img/bulb.jpg">
             <img onclick="bulbOn(this)" src="img/bulb.jpg">
             <img onclick="bulbOn(this)" src="img/bulb.jpg">
         </div>
+    </div>
+    <div class="levels-container">
+        <button class="beginner-btn" onclick="setGameLevel(this)">Beginner</button>
+        <button class="medium-btn" onclick="setGameLevel(this)">Medium</button>
+        <button class="expert-btn" onclick="setGameLevel(this)">Expert</button>
     </div>
     <div class="board-container"></div>
     <!-- The Modal -->
@@ -35,12 +44,8 @@
             </div>
         </div>
     </div>
-    <div class="levels-container">
-        <button class="beginner-btn" onclick="setGameLevel(this)">Beginner</button>
-        <button class="medium-btn" onclick="setGameLevel(this)">Medium</button>
-        <button class="expert-btn" onclick="setGameLevel(this)">Expert</button>
-    </div>
-    <footer>
+    <!-- the video -->
+    <!-- <footer>
         <section class="footer">
             <video loop src="http://phpcoder.tech/html-css/Smoke.mp4" autoplay muted></video>
             <h1>
@@ -55,7 +60,7 @@
                 <a href="mailto: urigross@gmail.com"><span>S</span></a>
             </h1>
         </section>
-    </footer>
+    </footer> -->
     <script src='js/localStorage.js'></script>
     <script src='js/hint.js'></script>
     <script src='js/lives.js'></script>
